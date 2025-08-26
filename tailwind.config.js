@@ -3,8 +3,15 @@ export default {
   darkMode: "class",
   content: ["./index.html", "./src/**/*.{js,ts,jsx,tsx}"],
   theme: {
+    fontFamily: {
+      sans: ["Roboto", "sans-serif"],
+    },
     extend: {
       colors: {
+        primary: "var(--purple-9)",
+        "primary-foreground": "var(--mauve-12)",
+        "muted-foreground": "var(--mauve-9)",
+
         purple: {
           1: "var(--purple-1)",
           2: "var(--purple-2)",
@@ -33,6 +40,35 @@ export default {
           10: "var(--purple-a-10)",
           11: "var(--purple-a-11)",
           12: "var(--purple-a-12)",
+        },
+        mauve: {
+          1: "var(--mauve-1)",
+          2: "var(--mauve-2)",
+          3: "var(--mauve-3)",
+          4: "var(--mauve-4)",
+          5: "var(--mauve-5)",
+          6: "var(--mauve-6)",
+          7: "var(--mauve-7)",
+          8: "var(--mauve-8)",
+          9: "var(--mauve-9)",
+          10: "var(--mauve-10)",
+          11: "var(--mauve-11)",
+          12: "var(--mauve-12)",
+        },
+
+        "mauve-a": {
+          1: "var(--mauve-a-1)",
+          2: "var(--mauve-a-2)",
+          3: "var(--mauve-a-3)",
+          4: "var(--mauve-a-4)",
+          5: "var(--mauve-a-5)",
+          6: "var(--mauve-a-6)",
+          7: "var(--mauve-a-7)",
+          8: "var(--mauve-a-8)",
+          9: "var(--mauve-a-9)",
+          10: "var(--mauve-a-10)",
+          11: "var(--mauve-a-11)",
+          12: "var(--mauve-a-12)",
         },
       },
     },
