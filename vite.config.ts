@@ -11,7 +11,7 @@ export default defineConfig({
   server: {
     host: "::",
     port: 3000,
-    open: true,
+    open: false,
   },
   plugins: [react(), tailwindcss()].filter(Boolean),
   resolve: {
