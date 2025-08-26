@@ -1,35 +1,36 @@
-import { useState } from 'react'
-import reactLogo from './assets/react.svg'
-import viteLogo from '/vite.svg'
-import './App.css'
+import { useTheme } from "./contexts/ThemeContext";
 
 function App() {
-  const [count, setCount] = useState(0)
+  const { theme, setTheme, toggle, resolvedTheme } = useTheme();
 
   return (
     <>
-      <div>
-        <a href="https://vite.dev" target="_blank">
-          <img src={viteLogo} className="logo" alt="Vite logo" />
-        </a>
-        <a href="https://react.dev" target="_blank">
-          <img src={reactLogo} className="logo react" alt="React logo" />
-        </a>
-      </div>
-      <h1>Vite + React</h1>
-      <div className="card">
-        <button onClick={() => setCount((count) => count + 1)}>
-          count is {count}
+      <div className="flex items-center gap-2">
+        <button
+          onClick={toggle}
+          className="px-3 py-1 rounded border transition-colors duration-150"
+          aria-label="Alternar tema"
+        >
+          {resolvedTheme === "dark" ? "🌙" : "☀️"}
         </button>
-        <p>
-          Edit <code>src/App.tsx</code> and save to test HMR
-        </p>
+
+        <select
+          value={theme}
+          onChange={(e) => setTheme(e.target.value as any)}
+          className="border px-2 py-1 rounded"
+        >
+          <option value="system">Sistema</option>
+          <option value="light">Claro</option>
+          <option value="dark">Escuro</option>
+        </select>
       </div>
-      <p className="read-the-docs">
-        Click on the Vite and React logos to learn more
-      </p>
+
+      <div className="min-h-screen bg-purple-7 text-gray-900 dark:bg-purple-7 dark:text-white transition-colors duration-200">
+        <h1 className="text-3xl">Meu App</h1>
+        <p className="text-purple-5 dark:text-gray-300">Conteúdo...</p>
+      </div>
     </>
-  )
+  );
 }
 
-export default App
+export default App;

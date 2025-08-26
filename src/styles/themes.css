@@ -1,0 +1,108 @@
+  :root{
+    --purple-1: rgba(254, 252, 254, 1);
+    --purple-2: rgba(251, 247, 254, 1);
+    --purple-3: rgba(247, 237, 254, 1);
+    --purple-4: rgba(242, 226, 252, 1);
+    --purple-5: rgba(234, 213, 249, 1);
+    --purple-6: rgba(224, 196, 244, 1);
+    --purple-7: rgba(209, 175, 236, 1);
+    --purple-8: rgba(190, 147, 228, 1);
+    --purple-9: rgba(142, 78, 198, 1);
+    --purple-10: rgba(131, 71, 185, 1);
+    --purple-11: rgba(129, 69, 181, 1);
+    --purple-12: rgba(64, 32, 96, 1);
+
+    --purple-a-1: rgba(170, 0, 170, 0.01);
+    --purple-a-2: rgba(128, 0, 224, 0.03);
+    --purple-a-3: rgba(142, 0, 241, 0.07);
+    --purple-a-4: rgba(141, 0, 229, 0.11);
+    --purple-a-5: rgba(128, 0, 219, 0.16);
+    --purple-a-6: rgba(122, 1, 208, 0.23);
+    --purple-a-7: rgba(109, 0, 195, 0.31);
+    --purple-a-8: rgba(102, 0, 192, 0.42);
+    --purple-a-9: rgba(92, 0, 173, 0.69);
+    --purple-a-10: rgba(83, 0, 158, 0.72);
+    --purple-a-11: rgba(82, 0, 154, 0.73);
+    --purple-a-12: rgba(37, 0, 73, 0.87);
+
+    --mauve-1: rgba(253, 252, 253, 1);
+    --mauve-2: rgba(250, 249, 251, 1);
+    --mauve-3: rgba(242, 239, 243, 1);
+    --mauve-4: rgba(234, 231, 236, 1);
+    --mauve-5: rgba(227, 223, 230, 1);
+    --mauve-6: rgba(219, 216, 224, 1);
+    --mauve-7: rgba(208, 205, 215, 1);
+    --mauve-8: rgba(188, 186, 199, 1);
+    --mauve-9: rgba(142, 140, 153, 1);
+    --mauve-10: rgba(132, 130, 142, 1);
+    --mauve-11: rgba(101, 99, 109, 1);
+    --mauve-12: rgba(33, 31, 38, 1);
+    
+    --mauve-a-1: rgba(85, 0, 85, 0.01); 
+    --mauve-a-2: rgba(43, 0, 85, 0.02); 
+    --mauve-a-3: rgba(48, 0, 64, 0.06); 
+    --mauve-a-4: rgba(32, 0, 54, 0.09); 
+    --mauve-a-5: rgba(32, 0, 56, 0.13); 
+    --mauve-a-6: rgba(20, 0, 53, 0.15); 
+    --mauve-a-7: rgba(16, 0, 51, 0.2); 
+    --mauve-a-8: rgba(8, 0, 49, 0.27); 
+    --mauve-a-9: rgba(5, 0, 29, 0.45); 
+    --mauve-a-10: rgba(5, 0, 25, 0.49); 
+    --mauve-a-11: rgba(4, 0, 17, 0.61); 
+    --mauve-a-12: rgba(2, 0, 8, 0.88); 
+  }
+
+  .dark{
+    --purple-1: rgba(24, 17, 27, 1);
+    --purple-2: rgba(30, 21, 35, 1);
+    --purple-3: rgba(61, 34, 78, 1);
+    --purple-4: rgba(61, 34, 78, 1);
+    --purple-5: rgba(61, 34, 78, 1);
+    --purple-6: rgba(84, 52, 107, 1);
+    --purple-7: rgba(102, 66, 130, 1);
+    --purple-8: rgba(132, 87, 170, 1);
+    --purple-9: rgba(142, 78, 198, 1);
+    --purple-10: rgba(154, 92, 208, 1);
+    --purple-11: rgba(209, 157, 255, 1);
+    --purple-12: rgba(236, 217, 250, 1);
+    
+    --purple-a-1: rgba(180, 18, 249, 0.04); 
+    --purple-a-2: rgba(183, 68, 247, 0.08); 
+    --purple-a-3: rgba(193, 80, 255, 0.18); 
+    --purple-a-4: rgba(187, 83, 253, 0.26); 
+    --purple-a-5: rgba(190, 92, 253, 0.32); 
+    --purple-a-6: rgba(193, 109, 253, 0.38); 
+    --purple-a-7: rgba(195, 120, 253, 0.48); 
+    --purple-a-8: rgba(196, 126, 255, 0.64); 
+    --purple-a-9: rgba(182, 97, 255, 0.76); 
+    --purple-a-10: rgba(188, 111, 255, 0.8); 
+    --purple-a-11: rgba(209, 157, 255, 1); 
+    --purple-a-12: rgba(241, 221, 255, 0.98); 
+
+    --mauve-1: rgba(18, 17, 19, 1);
+    --mauve-2: rgba(26, 25, 27, 1);
+    --mauve-3: rgba(35, 34, 37, 1);
+    --mauve-4: rgba(43, 41, 45, 1);
+    --mauve-5: rgba(50, 48, 53, 1);
+    --mauve-6: rgba(60, 57, 63, 1);
+    --mauve-7: rgba(73, 71, 78, 1);
+    --mauve-8: rgba(98, 95, 105, 1);
+    --mauve-9: rgba(111, 109, 120, 1);
+    --mauve-10: rgba(124, 122, 133, 1);
+    --mauve-11: rgba(181, 178, 188, 1);
+    --mauve-12: rgba(238, 238, 240, 1);
+    
+    --mauve-a-1: rgba(0, 0, 0, 0); 
+    --mauve-a-2: rgba(245, 244, 246, 0.04); 
+    --mauve-a-3: rgba(235, 234, 248, 0.08); 
+    --mauve-a-4: rgba(238, 229, 248, 0.11); 
+    --mauve-a-5: rgba(239, 230, 254, 0.15); 
+    --mauve-a-6: rgba(241, 230, 253, 0.19); 
+    --mauve-a-7: rgba(238, 233, 255, 0.25); 
+    --mauve-a-8: rgba(238, 231, 255, 0.36); 
+    --mauve-a-9: rgba(234, 230, 253, 0.43); 
+    --mauve-a-10:rgba(236, 233, 253, 0.49) ; 
+    --mauve-a-11:rgba(245, 241, 255, 0.72) ; 
+    --mauve-a-12: rgba(253, 253, 255, 0.94); 
+
+  }
