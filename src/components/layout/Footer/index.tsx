@@ -1,4 +1,4 @@
-export default function Footer() {
+export function Footer() {
   return (
     <div className="fixed bottom-0 w-full flex justify-center items-center border-t-1 py-2 border-mauve-6">
       <span className="text-base text-center text-primary-foreground">

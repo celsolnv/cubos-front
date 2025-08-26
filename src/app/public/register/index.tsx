@@ -7,7 +7,7 @@ import { InputDefault } from "@/components/ds";
 import { Footer, Header } from "@/components/layout";
 import { Button, Text } from "@/components/ui";
 
-export default function Login() {
+export default function Register() {
   const { hookForm, onSubmit } = usePage();
   return (
     <>
@@ -23,8 +23,13 @@ export default function Login() {
                 onSubmit={hookForm.handleSubmit(onSubmit)}
               >
                 <InputDefault
+                  name="name"
+                  label="Nome"
+                  placeholder="Digite seu nome"
+                />
+                <InputDefault
                   name="email"
-                  label="Nome/E-mail"
+                  label="E-mail"
                   placeholder="Digite seu nome ou e-mail"
                 />
                 <InputDefault
@@ -33,15 +38,16 @@ export default function Login() {
                   type="password"
                   placeholder="Digite sua senha"
                 />
+                <InputDefault
+                  name="confirmPassword"
+                  label="Confirmar senha"
+                  type="password"
+                  placeholder="Digite sua senha novamente"
+                />
 
-                <div className="flex justify-between gap-2 w-full items-center">
-                  <Link to="/forgot-password">
-                    <span className="text-primary underline ">
-                      Esqueci minha senha
-                    </span>
-                  </Link>
+                <div className="flex justify-end w-full items-center">
                   <Button className="min-h-[44px]" variant="default">
-                    Entrar
+                    Cadastrar
                   </Button>
                 </div>
               </form>
@@ -49,9 +55,9 @@ export default function Login() {
 
             <div className="mt-8 w-full text-center leading-1">
               <Text className="text-sm" as="span">
-                Não tem uma conta?{" "}
-                <Link to="/cadastro" className="underline">
-                  Cadastre-se
+                Já tem uma conta?{" "}
+                <Link to="/login" className="underline">
+                  Faça login
                 </Link>
               </Text>
             </div>

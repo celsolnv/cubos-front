@@ -1,10 +1,13 @@
 import SelectTheme from "./SelectTheme";
 
 import { Button } from "@/components/ui";
+import { useAuth } from "@/contexts/AuthContext";
 import { useIsMobile } from "@/hooks/use-mobile";
 
-export default function Header() {
+export function Header() {
   const isMobile = useIsMobile();
+  const { token } = useAuth();
+
   return (
     <header className="fixed top-0 w-full flex justify-between items-center bg-mauve-1 py-2 z-11 px-4">
       <div className="flex items-center gap-4">
@@ -20,7 +23,7 @@ export default function Header() {
 
       <div className="flex items-center gap-2">
         <SelectTheme />
-        <Button variant="default">Sair</Button>
+        {token && <Button variant="default">Sair</Button>}
       </div>
     </header>
   );
