@@ -1,20 +1,19 @@
+import Cookies from "js-cookie";
+
 export const useSignOut = () => {
   const out = async () => {
-    if (typeof window !== "undefined") {
-      localStorage.clear();
-    }
-    localStorage.remove(import.meta.env.VITE_PUBLIC_TOKEN_LOCAL);
-    cleanLocalStorage();
+    Cookies.remove(import.meta.env.VITE_PUBLIC_TOKEN_LOCAL);
+    // cleanCookies();
     window.location.href = "/login";
   };
 
   return { out };
 };
 
-export const cleanLocalStorage = () => {
+export const cleanCookies = () => {
   // Clean all cookies
-  const cookies = localStorage.get();
+  const cookies = Cookies.get();
   for (const cookie in cookies) {
-    localStorage.remove(cookie);
+    Cookies.remove(cookie);
   }
 };
