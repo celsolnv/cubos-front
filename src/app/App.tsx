@@ -9,6 +9,7 @@ import {
 import Login from "./public/login";
 import Register from "./public/register";
 
+import { Toaster as Sonner } from "@/components/ui/sonner";
 import { AuthProvider } from "@/contexts/AuthContext";
 import { ThemeProvider } from "@/contexts/ThemeContext";
 import { getToken } from "@/hooks/token";
@@ -25,6 +26,7 @@ export default function App() {
   return (
     <>
       <Theme>
+        <Sonner />
         <ThemeProvider>
           <AuthProvider>
             <BrowserRouter>
