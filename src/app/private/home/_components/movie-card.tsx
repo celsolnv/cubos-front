@@ -8,7 +8,7 @@ export function MovieCard(movie: IMovieCardProps) {
   return (
     <div
       style={{ backgroundImage: `url(${movie.banner})` }}
-      className="bg-cover bg-center relative min-h-[281px] min-w-[183px] m-2 rounded-lg"
+      className="bg-cover bg-center relative h-[281px] w-[183px] lg:w-[235px] lg:h-[355px] rounded-lg"
     >
       {/* Linear gradient overlay */}
       <div

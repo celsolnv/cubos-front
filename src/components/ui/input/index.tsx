@@ -7,7 +7,7 @@ export interface IInputProps extends React.ComponentProps<"input"> {
   loading?: boolean;
 }
 
-function Input({ className, type, loading, ...props }: IInputProps) {
+function Input({ className, type, loading = false, ...props }: IInputProps) {
   return (
     <Skeleton loading={loading} minHeight="36px">
       <input
