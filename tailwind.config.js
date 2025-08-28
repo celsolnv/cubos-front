@@ -5,6 +5,7 @@ export default {
   theme: {
     fontFamily: {
       sans: ["Roboto", "sans-serif"],
+      roboto: ["Roboto", "sans-serif"],
     },
     extend: {
       colors: {

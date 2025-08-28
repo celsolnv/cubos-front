@@ -11,7 +11,7 @@ export function Header() {
   const { out } = useSignOut();
 
   return (
-    <header className="fixed top-0 w-full flex justify-between items-center bg-mauve-1 py-2 z-11 px-4">
+    <header className="fixed top-0 w-full flex justify-between items-center bg-mauve-1 py-2 z-11 px-4 h-[72px]">
       <div className="flex items-center gap-4">
         {isMobile ? (
           <img src="public/icons/cubos-logo-min.svg" alt="Cubos Movies" />
