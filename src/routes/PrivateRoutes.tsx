@@ -2,6 +2,7 @@ import { useLocation, Outlet, Navigate, Routes, Route } from "react-router-dom";
 
 import Home from "@/app/private/home";
 import { getToken } from "@/hooks/token";
+import MovieDetails from "@/app/private/details";
 
 const PrivateRoute = ({ isAuthenticated }: { isAuthenticated: boolean }) => {
   const location = useLocation();
@@ -20,6 +21,7 @@ export function PrivateRoutes() {
     <Routes>
       <Route element={<PrivateRoute isAuthenticated={isAuthenticated} />}>
         <Route path="/" element={<Home />} />
+        <Route path="/details/:id" element={<MovieDetails />} />
       </Route>
     </Routes>
   );
