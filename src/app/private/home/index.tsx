@@ -5,11 +5,11 @@ import { Footer, Header } from "@/components/layout";
 import { Button, Input } from "@/components/ui";
 
 export default function Home() {
-  const moviesCards = movies.slice(0, 6);
+  const moviesCards = movies.slice(0, 14);
   return (
     <div>
       <Header />
-      <div className="bg-[url('public/background.png')] relative  w-screen bg-cover bg-center">
+      <div className="bg-[url('public/background.png')] relative  w-screen bg-cover bg-center overflow-x-hidden">
         <div className="absolute inset-0 bg-gradient-to-b from-black/40  to-black/90"></div>
 
         <div className="relative z-10 flex flex-col items-center justify-center gap-4 mt-[72px]">
@@ -23,18 +23,18 @@ export default function Home() {
             <Button className="grow-2">Adicionar Filme</Button>
           </div>
 
-          <div className="bg-mauve-a-3 w-full grid grid-cols-2 lg:grid-cols-5 md:grid-cols-4 sm:grid-cols-3 gap-2 py-4 justify-items-center">
+          <div className="bg-mauve-a-3 w-full gap-4 py-4 flex flex-wrap justify-center ">
             {moviesCards.map((movie) => (
               <MovieCard
                 key={movie.name}
                 name={movie.name || ""}
                 banner={movie.banner}
-                gender={movie.genres[0]}
-                rating={movie.rating}
+                gender={movie.genres}
+                rating={movie.rating * 10}
               />
             ))}
           </div>
-          <Footer isFixed={false} />
+          <Footer />
         </div>
       </div>
     </div>
