@@ -1,6 +1,6 @@
 import { useState } from "react";
 
-import { MovieEditSidebar } from "./_components/movie-edit-sidebar";
+import { MovieSidebar } from "@/components/movie-sidebar";
 
 export default function MovieDetails() {
   const [movieData, setMovieData] = useState({
@@ -211,7 +211,7 @@ export default function MovieDetails() {
           </div>
         </div>
       </div>
-      <MovieEditSidebar
+      <MovieSidebar
         isOpen={isSidebarOpen}
         onClose={() => setIsSidebarOpen(false)}
         movieData={movieData}

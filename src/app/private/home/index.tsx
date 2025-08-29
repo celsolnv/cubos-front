@@ -1,11 +1,19 @@
+import { useState } from "react";
+
 import { MovieCard } from "./_components/movie-card";
 import { usePage } from "./usePage";
 
 import { Footer, Header } from "@/components/layout";
+import { MovieSidebar } from "@/components/movie-sidebar";
 import { Button, Input } from "@/components/ui";
 
 export default function Home() {
   const { data, handleSearch } = usePage();
+  const [isSidebarOpen, setIsSidebarOpen] = useState(false);
+
+  const onSave = (data: unknown) => {
+    console.log("onSave", data);
+  };
   return (
     <div>
       <Header />
@@ -40,6 +48,11 @@ export default function Home() {
           <Footer isFixed />
         </div>
       </div>
+      <MovieSidebar
+        isOpen={isSidebarOpen}
+        onClose={() => setIsSidebarOpen(false)}
+        onSave={onSave}
+      />
     </div>
   );
 }
