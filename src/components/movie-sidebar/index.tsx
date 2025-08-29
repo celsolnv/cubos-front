@@ -141,6 +141,7 @@ export const MovieSidebar: React.FC<MovieEditSidebarProps> = ({
                   <SelectDefault
                     label="Situação"
                     name="status"
+                    placeholder="Selecione a situação"
                     options={statusOptions}
                   />
                   <InputDefault label="Idioma" name="language" />

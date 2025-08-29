@@ -33,6 +33,11 @@ export const useMovie = (item?: IUseCallerProps<IMovie>) => {
         item.callbacks.create.onSuccess(data);
       }
     },
+    onError: () => {
+      if (item?.callbacks?.create?.onError) {
+        item.callbacks.create.onError();
+      }
+    },
   });
 
   const update = useMutation({
@@ -40,6 +45,11 @@ export const useMovie = (item?: IUseCallerProps<IMovie>) => {
     onSuccess: (data) => {
       if (item?.callbacks?.update?.onSuccess) {
         item.callbacks.update.onSuccess(data);
+      }
+    },
+    onError: () => {
+      if (item?.callbacks?.update?.onError) {
+        item.callbacks.update.onError();
       }
     },
   });

@@ -67,6 +67,7 @@ export const usePage = () => {
   };
 
   const handleCreate = (data: TFormData) => {
+    console.log("data", data);
     setIsLoading(true);
     create.mutate(data);
   };

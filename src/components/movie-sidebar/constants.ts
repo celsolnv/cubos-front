@@ -18,6 +18,7 @@ export const movieSchema = z.object({
   rating: f.numberTransformWithDecimal("Avaliação"),
   durationMinutes: f.numberTransform("Duração em minutos"),
   genres: z.array(z.string()).transform((val) => val.map((v) => v.trim())),
+  file: z.any().optional().nullable(),
 });
 
 export type TFormData = z.infer<typeof movieSchema>;
@@ -46,7 +47,7 @@ export const availableGenres = [
   "Música",
   "Mistério",
   "Romance",
-  "Ficção científica",
+  "Ficção Científica",
   "Thriller",
   "Guerra",
   "Faroeste",

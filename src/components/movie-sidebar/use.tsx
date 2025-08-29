@@ -26,7 +26,6 @@ export const useMovieSidebar = ({
         ...formatRequest(movie),
       });
     }
-    console.log("Renovando...");
   }, [hookForm, isOpen]);
 
   const handleFileUpload = (file: File, type: "poster" | "backdrop") => {
@@ -35,7 +34,8 @@ export const useMovieSidebar = ({
       const result = e.target?.result as string;
       if (type === "poster") {
         setPosterPreview(result);
-        hookForm.setValue("bannerUrl", result);
+        hookForm.setValue("file", file);
+        // hookForm.setValue("bannerUrl", result);
       }
     };
     reader.readAsDataURL(file);
