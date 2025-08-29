@@ -20,7 +20,6 @@ export const usePage = () => {
     callbacks: {
       list: {
         onSuccess: (data) => {
-          console.log("data", data);
           const formatter = data.items?.map((item: IMovie) => ({
             ...item,
             rating: item.rating * 10,

@@ -47,7 +47,6 @@ export const usePage = () => {
         }
       })
       .catch((err) => {
-        console.log(err);
         toast.error("Um erro inesperado ocorreu");
       })
       .finally(() => {

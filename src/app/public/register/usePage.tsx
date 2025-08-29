@@ -28,7 +28,6 @@ export const usePage = () => {
   });
 
   const onSubmit = (data: IForm) => {
-    console.log(data);
     api.createUser(data).then(() => {
       toast.success("Usuário criado com sucesso");
       navigate("/login");

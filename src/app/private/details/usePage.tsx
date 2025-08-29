@@ -9,13 +9,11 @@ import masks from "@/utils/masks";
 
 export const usePage = () => {
   const { id } = useParams<{ id: string }>();
-  console.log("id", id);
 
   const [isSidebarOpen, setIsSidebarOpen] = useState(false);
 
   const handleSaveMovie = (updatedData: typeof movieData) => {
     setMovieData(updatedData);
-    console.log("Movie updated:", updatedData);
   };
 
   const [movieData, setMovieData] = useState<IMovie | null>(null);
