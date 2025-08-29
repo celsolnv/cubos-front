@@ -3,13 +3,14 @@ import { removeFalsyValuesFromObject } from "../func";
 export const setMultiFormData = (
   // eslint-disable-next-line @typescript-eslint/no-explicit-any
   body: any,
+  fileKey: string,
 ): FormData => {
   const formData = new FormData();
   const file = body.file || [];
   delete body.file;
   const formatBody = removeFalsyValuesFromObject(body);
   if (file) {
-    formData.append("file", file);
+    formData.append(fileKey, file);
   }
   Object.entries(formatBody).forEach(([key, value]) => {
     if (!value) {

@@ -4,3 +4,6 @@ export * from "./label";
 export * from "./text";
 export * from "./flex";
 export * from "./skeleton";
+export * from "./select";
+export * from "./popover";
+export * from "./badge";

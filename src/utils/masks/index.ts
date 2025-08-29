@@ -94,7 +94,7 @@ class Mask {
     const formattedValue = parsedValue.toLocaleString("pt-BR", {
       style: "currency",
       currency: "BRL",
-      maximumFractionDigits: 2
+      maximumFractionDigits: 2,
     });
     return formattedValue;
   }
@@ -203,7 +203,7 @@ class Mask {
     const words = input.toLowerCase().split(" ");
 
     const formattedWords = words.map(
-      (word) => word.charAt(0).toUpperCase() + word.slice(1)
+      (word) => word.charAt(0).toUpperCase() + word.slice(1),
     );
 
     const result = formattedWords.join(" ");
@@ -230,13 +230,13 @@ class Mask {
     } else if (val.length <= 14) {
       val = val.replace(
         /(\d{2})(\d{3})(\d{3})(\d{4})(\d{2})/,
-        "$1.$2.$3/$4-$5"
+        "$1.$2.$3/$4-$5",
       ); // Aplica a máscara de CNPJ
     } else if (val.length > 14) {
       const cache = val.slice(0, 14);
       val = cache.replace(
         /(\d{2})(\d{3})(\d{3})(\d{4})(\d{2})/,
-        "$1.$2.$3/$4-$5"
+        "$1.$2.$3/$4-$5",
       );
       return val;
     }
@@ -249,6 +249,41 @@ class Mask {
       return "";
     }
     return value.replace(/(\d{4})(?=\d)/g, "$1 ");
+  }
+
+  rating1To10(value: string): string {
+    if (!value) {
+      return "";
+    }
+    const cleanValue = value.replace(/[^\d.]/g, "");
+
+    if (!cleanValue || cleanValue === "." || cleanValue === ",") {
+      return "";
+    }
+
+    const normalizedValue = cleanValue.replace(",", ".");
+
+    const dotCount = (normalizedValue.match(/\./g) || []).length;
+    if (dotCount > 1) {
+      const parts = normalizedValue.split(".");
+      return parts[0] + "." + parts.slice(1).join("");
+    }
+
+    const number = parseFloat(normalizedValue);
+
+    if (isNaN(number)) {
+      return cleanValue;
+    }
+
+    if (number < 1 && cleanValue.length > 1) {
+      return cleanValue;
+    }
+
+    if (number > 10) {
+      return "10";
+    }
+
+    return cleanValue;
   }
 }
 export default new Mask();

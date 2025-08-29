@@ -8,7 +8,10 @@ import { removeNonNumbers } from "@/utils/masks/justNumber";
 
 export interface IInputDefaultProps
   extends Omit<IInputContainerProps, "InputComponent">,
-    Pick<React.InputHTMLAttributes<HTMLInputElement>, "type" | "autoComplete"> {
+    Pick<
+      React.InputHTMLAttributes<HTMLInputElement>,
+      "type" | "autoComplete" | "min" | "max"
+    > {
   onlyNumbers?: boolean;
   maxLength?: number;
   description?: string;
@@ -25,6 +28,8 @@ export function InputDefault({
   maxLength,
   autoComplete,
   hasRender = true,
+  min,
+  max,
   ...rest
 }: Readonly<IInputDefaultProps>) {
   const { canEdit, isLoading } = useManagerForm();
@@ -42,6 +47,8 @@ export function InputDefault({
           disabled={!canEdit || disabled}
           maxLength={maxLength}
           type={type}
+          min={min}
+          max={max}
           onChange={(e) => {
             if (onlyNumbers) {
               field.onChange(removeNonNumbers(e.target.value));

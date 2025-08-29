@@ -1,3 +1,5 @@
+import masks from "@/utils/masks";
+
 export const movies = [
   {
     name: "Um Sonho de Liberdade",
@@ -37,7 +39,7 @@ export const movies = [
     status: "lançado",
     releaseDate: "2008-07-18",
     budget: 185000000,
-    revenue: 1004558444,
+    revenue: masks.money(1004558444),
     banner: "https://image.tmdb.org/t/p/w1280/qJ2tW6WMUDux911r6m7haRef0WH.jpg",
     genres: ["Ação", "Crime", "Drama"],
     director: "Christopher Nolan",

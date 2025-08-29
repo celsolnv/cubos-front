@@ -61,7 +61,7 @@ export default function MovieDetails() {
                 </div>
               </div>
 
-              <div className="flex gap-6">
+              <div className="flex gap-6 flex-col md:flex-row">
                 <section className="flex min-w-60 flex-col items-stretch flex-1 shrink basis-[0%]">
                   <article className="card-movie-details-info rounded  w-full text-base p-4">
                     <h3 className="bg-blend-normal text-mauve-11 font-bold uppercase">
@@ -75,7 +75,7 @@ export default function MovieDetails() {
                     <h3 className="bg-blend-normal text-mauve-11 text-sm font-bold">
                       Gêneros
                     </h3>
-                    <div className="flex gap-2 mt-2">
+                    <div className="flex flex-wrap gap-2 mt-2">
                       {movieData.genres.map((genre, index) => (
                         <div className="gender-tag" key={index}>
                           {genre}
@@ -130,8 +130,6 @@ export default function MovieDetails() {
           isOpen={isSidebarOpen}
           onClose={() => setIsSidebarOpen(false)}
           onSave={() => {}}
-          // movieData={movieData}
-          // onSave={handleSaveMovie}
         />
       </main>
       <Footer />

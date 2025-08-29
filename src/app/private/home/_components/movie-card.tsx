@@ -1,6 +1,7 @@
 /* eslint-disable jsx-a11y/no-noninteractive-element-interactions */
 /* eslint-disable jsx-a11y/click-events-have-key-events */
 
+import { CircularRating } from "@/components/circular-rating";
 import type { IMovie } from "@/types/IMovie";
 
 interface IMovieCardProps extends IMovie {
@@ -17,7 +18,7 @@ export function MovieCard({
   onView,
 }: IMovieCardProps) {
   const hideClass =
-    "opacity-0 group-hover:opacity-100 transition-all duration-300 transform translate-y-4 group-hover:translate-y-0";
+    "opacity-0 group-hover:opacity-100 transition-all duration-300 transform translate-y-4 group-hover:translate-y-0 text-[#EEEEEE]";
   return (
     <article
       className={`relative group cursor-pointer overflow-hidden rounded-lg h-[281px] w-[183px] lg:w-[235px] lg:h-[355px]${className}`}
@@ -40,35 +41,11 @@ export function MovieCard({
         <div className="absolute inset-0 bg-gradient-to-t from-black via-black/50 to-transparent opacity-0 group-hover:opacity-100 transition-all duration-300" />
 
         <div className="absolute top-1/2 left-1/2 transform -translate-x-1/2 -translate-y-1/2 opacity-0 group-hover:opacity-100 transition-all duration-300">
-          <div className="relative w-20 h-20">
-            <svg className="w-20 h-20 transform -rotate-90" viewBox="0 0 36 36">
-              <path
-                d="M18 2.0845
-                  a 15.9155 15.9155 0 0 1 0 31.831
-                  a 15.9155 15.9155 0 0 1 0 -31.831"
-                fill="none"
-                stroke="rgba(255,255,255,0.2)"
-                strokeWidth="2"
-              />
-              <path
-                d="M18 2.0845
-                  a 15.9155 15.9155 0 0 1 0 31.831
-                  a 15.9155 15.9155 0 0 1 0 -31.831"
-                fill="none"
-                stroke="#fbbf24"
-                strokeWidth="3"
-                strokeDasharray={`${rating}, 100`}
-                strokeLinecap="round"
-              />
-            </svg>
-            <div className="absolute inset-0 flex items-center justify-center">
-              <span className="text-white text-sm font-bold">{rating}%</span>
-            </div>
-          </div>
+          <CircularRating rating={rating} />
         </div>
 
         <div className="absolute bottom-0 left-0 right-0 p-4 flex flex-col justify-center  ">
-          <h3 className=" text-base font-semibold mb-2 uppercase tracking-wide translate-y-15 group-hover:translate-y-0 transition-all duration-300">
+          <h3 className=" font-semibold mb-2 uppercase tracking-wide translate-y-15 group-hover:translate-y-0 transition-all duration-300 text-[#EEEEEE]">
             {name}
           </h3>
           <p className={hideClass}>{genres?.join(", ")}</p>

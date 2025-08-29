@@ -2,19 +2,23 @@ import { useCallback, useMemo, useState } from "react";
 import { useNavigate } from "react-router-dom";
 
 import { useMovie } from "@/api/callers/movie";
+import type { TFormData } from "@/components/movie-sidebar/schema";
 import type { IMovie } from "@/types/IMovie";
 import type { IQuery } from "@/types/IPagination";
 import { debounce } from "@/utils/func";
 
 export const usePage = () => {
   const [data, setData] = useState<IMovie[]>([]);
+  const [pagination, setPagination] = useState();
   const navigate = useNavigate();
+  const [isSidebarOpen, setIsSidebarOpen] = useState(false);
+
   const [filters, setFilters] = useState<IQuery>({
     page: 1,
     limit: 10,
     query: "",
   });
-  useMovie({
+  const { create, list } = useMovie({
     enabled: true,
     filters,
     callbacks: {
@@ -25,6 +29,13 @@ export const usePage = () => {
             rating: item.rating * 10,
           }));
           setData(formatter);
+          setPagination(data.pagination);
+        },
+      },
+      create: {
+        onSuccess: () => {
+          list.refetch();
+          setIsSidebarOpen(false);
         },
       },
     },
@@ -49,11 +60,19 @@ export const usePage = () => {
     navigate(`/details/${id}`);
   };
 
+  const handleCreate = (data: TFormData) => {
+    create.mutate(data);
+  };
+
   return {
     data,
     setFilters,
     filters,
     handleSearch,
     handleView,
+    handleCreate,
+    isSidebarOpen,
+    setIsSidebarOpen,
+    pagination,
   };
 };
