@@ -57,7 +57,7 @@ export default function Login() {
             </div>
           </div>
 
-          <Footer />
+          <Footer isFixed />
         </div>
       </div>
     </>

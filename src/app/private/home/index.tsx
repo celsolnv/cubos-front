@@ -1,11 +1,11 @@
 import { MovieCard } from "./_components/movie-card";
-import { movies } from "./constants";
+import { usePage } from "./usePage";
 
 import { Footer, Header } from "@/components/layout";
 import { Button, Input } from "@/components/ui";
 
 export default function Home() {
-  const moviesCards = movies.slice(0, 14);
+  const { data, handleSearch } = usePage();
   return (
     <div>
       <Header />
@@ -14,7 +14,11 @@ export default function Home() {
 
         <div className="relative z-10 flex flex-col items-center justify-center gap-4 mt-[72px]">
           <div className="w-full px-4 mt-4 ">
-            <Input name="search" placeholder="Pesquise por filmes " />
+            <Input
+              name="search"
+              placeholder="Pesquise por filmes "
+              onChange={(e) => handleSearch(e.target.value)}
+            />
           </div>
           <div className="flex w-full px-4">
             <Button className="grow-1" variant="soft">
@@ -24,17 +28,16 @@ export default function Home() {
           </div>
 
           <div className="bg-mauve-a-3 w-full gap-4 py-4 flex flex-wrap justify-center ">
-            {moviesCards.map((movie) => (
-              <MovieCard
-                key={movie.name}
-                name={movie.name || ""}
-                banner={movie.banner}
-                gender={movie.genres}
-                rating={movie.rating * 10}
-              />
+            {data?.map((movie) => (
+              <MovieCard key={movie.id} {...movie} />
             ))}
+            {data.length === 0 && (
+              <div className="flex flex-col items-center justify-center h-screen">
+                <p className="text-mauve-11">Nenhum filme encontrado</p>
+              </div>
+            )}
           </div>
-          <Footer />
+          <Footer isFixed />
         </div>
       </div>
     </div>

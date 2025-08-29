@@ -9,7 +9,7 @@ export function Footer({ isFixed = false }: { isFixed?: boolean }) {
         !isFixed && "relative mt-auto pt-8",
       )}
     >
-      <span className="text-base text-center text-primary-foreground">
+      <span className="text-base text-center text-mauve-11">
         2025 © Todos os direitos reservados a <strong>Cubos Movies</strong>
       </span>
     </footer>

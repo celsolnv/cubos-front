@@ -1,5 +1,9 @@
+import { useState } from "react";
+
+import { MovieEditSidebar } from "./_components/movie-edit-sidebar";
+
 export default function MovieDetails() {
-  const movieData = {
+  const [movieData, setMovieData] = useState({
     title: "Bumblebee",
     originalTitle: "Bumblebee",
     tagline: "Todo herói tem um começo.",
@@ -19,14 +23,21 @@ export default function MovieDetails() {
       "https://api.builder.io/api/v1/image/assets/aff716cbe72e4b2ea9377e220d5a9405/f86b509c42017a530e132fc955595befd8cd98d3?placeholderIfAbsent=true",
     backdropUrl:
       "https://api.builder.io/api/v1/image/assets/aff716cbe72e4b2ea9377e220d5a9405/730ec13d280999a606374365517960357a840fd4?placeholderIfAbsent=true",
-  };
+  });
+  const [isSidebarOpen, setIsSidebarOpen] = useState(false);
 
   const handleEdit = () => {
-    console.log("Edit movie clicked");
+    setIsSidebarOpen(true);
   };
 
   const handleDelete = () => {
     console.log("Delete movie clicked");
+    // Here you could show a confirmation dialog and delete the movie
+  };
+
+  const handleSaveMovie = (updatedData: typeof movieData) => {
+    setMovieData(updatedData);
+    console.log("Movie updated:", updatedData);
   };
 
   return (
@@ -114,7 +125,7 @@ export default function MovieDetails() {
             <div className="flex gap-6">
               <section className="flex min-w-60 flex-col items-stretch flex-1 shrink basis-[0%]">
                 <article className="rounded bg-[rgba(35,34,37,0.6)] w-full text-base p-4">
-                  <h3 className="bg-blend-normal text-[rgba(181,178,188,1)] font-bold uppercase">
+                  <h3 className="bg-blend-normal text-mauve-11 font-bold uppercase">
                     Sinopse
                   </h3>
                   <p className="text-[rgba(238,238,240,1)] font-normal mt-2">
@@ -122,7 +133,7 @@ export default function MovieDetails() {
                   </p>
                 </article>
                 <div className="rounded bg-[rgba(35,34,37,0.6)] mt-4 p-4">
-                  <h3 className="bg-blend-normal text-[rgba(181,178,188,1)] text-sm font-bold">
+                  <h3 className="bg-blend-normal text-mauve-11 text-sm font-bold">
                     Generos
                   </h3>
                   <div className="flex gap-2 mt-2">
@@ -200,6 +211,12 @@ export default function MovieDetails() {
           </div>
         </div>
       </div>
+      <MovieEditSidebar
+        isOpen={isSidebarOpen}
+        onClose={() => setIsSidebarOpen(false)}
+        movieData={movieData}
+        onSave={handleSaveMovie}
+      />
     </main>
   );
 }
