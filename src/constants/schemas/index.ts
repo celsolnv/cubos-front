@@ -69,6 +69,40 @@ export const numberTransform = (name: string, required = true) => {
     });
 };
 
+export const numberTransformWithDecimal = (name: string, required = true) => {
+  return z
+    .any({ required_error: `${name} é obrigatório.` })
+    .refine(
+      (value) => {
+        if (!value && required) {
+          return false;
+        }
+        return true;
+      },
+      { message: "Campo obrigatório" },
+    )
+    .refine(
+      (value) => {
+        if (!value && !required) {
+          return true;
+        }
+        if (typeof value === "number") {
+          if (!required) return true;
+          return !isNaN(value);
+        }
+        const cleanValue = value?.replace(/[^\d,.]/g, "");
+        return !isNaN(Number(cleanValue));
+      },
+      { message: "Valor inválido" },
+    )
+    .transform((value) => {
+      if (typeof value === "number") {
+        return value;
+      }
+      const cleanValue = masks.maskIntoNumber(value.replace(".", ","));
+      return cleanValue;
+    });
+};
 export const email = (name: string) => {
   return z
     .string({ required_error: `${name} é obrigatório.` })

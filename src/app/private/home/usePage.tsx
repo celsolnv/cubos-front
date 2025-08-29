@@ -2,7 +2,8 @@ import { useCallback, useMemo, useState } from "react";
 import { useNavigate } from "react-router-dom";
 
 import { useMovie } from "@/api/callers/movie";
-import type { TFormData } from "@/components/movie-sidebar/schema";
+import type { TFormData } from "@/components/movie-sidebar/constants";
+import { useManagerForm } from "@/logic/form";
 import type { IMovie } from "@/types/IMovie";
 import type { IQuery } from "@/types/IPagination";
 import { debounce } from "@/utils/func";
@@ -18,6 +19,7 @@ export const usePage = () => {
     limit: 10,
     query: "",
   });
+  const setIsLoading = useManagerForm().setIsLoading;
   const { create, list } = useMovie({
     enabled: true,
     filters,
@@ -36,6 +38,10 @@ export const usePage = () => {
         onSuccess: () => {
           list.refetch();
           setIsSidebarOpen(false);
+          setIsLoading(false);
+        },
+        onError: () => {
+          setIsLoading(false);
         },
       },
     },
@@ -61,6 +67,7 @@ export const usePage = () => {
   };
 
   const handleCreate = (data: TFormData) => {
+    setIsLoading(true);
     create.mutate(data);
   };
 

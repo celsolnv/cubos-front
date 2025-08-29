@@ -22,9 +22,8 @@ export interface ICreate {
   genres: string[];
 }
 
-export interface IUpdate extends ICreate {
-  id: string;
-}
+// eslint-disable-next-line @typescript-eslint/no-empty-object-type
+export interface IUpdate extends ICreate {}
 
 export const list = async (query: IQuery) =>
   handleReq({
@@ -53,6 +52,8 @@ export const update = async (body: IUpdate, id: string) =>
     method: "put",
     url: `${url}/${id}`,
     body: setMultiFormData(body, "banner"),
+    showSuccess: true,
+    successMessage: "Filme atualizado com sucesso",
   });
 
 export const destroy = async (id: string) =>

@@ -1,21 +1,53 @@
-import masks from "@/utils/masks";
+import { z } from "zod";
 
-export const mockData = {
-  bannerUrl: "https://image.tmdb.org/t/p/w1280/qJ2tW6WMUDux911r6m7haRef0WH.jpg",
-  name: "Cavaleiro das trevas",
-  originalName: "The Dark Knight",
-  tagline: "Batman se une a um grupo de super-heróis para salvar o mundo.",
-  genres: ["Ação", "Aventura", "Drama"],
-  description: "Batman se une a um grupo de super-heróis para salvar o mundo.",
-  language: "Inglês",
-  director: "Anthony Russo, Joe Russo",
-  releaseDate: "2025-08-29",
-  budget: masks.money(185000000),
-  revenue: masks.money(1004558444),
-  popularity: 100000,
-  votes: 10000,
-  rating: 9.2,
-  duration: 120,
-  status: "lançado",
-  cast: ["Christian Bale", "Heath Ledger", "Aaron Eckhart"],
-};
+import * as f from "@/constants/schemas";
+
+export const movieSchema = z.object({
+  name: f.string("Título"),
+  originalName: f.string("Título Original"),
+  tagline: f.string("Tagline"),
+  description: f.text("Sinopse"),
+  bannerUrl: f.text("Banner").optional().nullable(),
+  language: f.string("Idioma"),
+  director: f.string("Diretor"),
+  releaseDate: f.dateFutureAllowed,
+  budget: f.numberTransform("Orçamento"),
+  revenue: f.numberTransform("Receita"),
+  popularity: f.numberTransform("Popularidade").optional().nullable(),
+  votes: f.numberTransform("Votos").optional().nullable(),
+  rating: f.numberTransformWithDecimal("Avaliação"),
+  durationMinutes: f.numberTransform("Duração em minutos"),
+  genres: z.array(z.string()).transform((val) => val.map((v) => v.trim())),
+});
+
+export type TFormData = z.infer<typeof movieSchema>;
+
+export const statusOptions = [
+  { label: "Lançado", value: "lançado" },
+  { label: "Em produção", value: "em produção" },
+  { label: "Pós-produção", value: "pós-produção" },
+  { label: "Pré-produção", value: "pré-produção" },
+  { label: "Cancelado", value: "cancelado" },
+  { label: "Em espera", value: "em espera" },
+];
+
+export const availableGenres = [
+  "Ação",
+  "Aventura",
+  "Animação",
+  "Comédia",
+  "Crime",
+  "Documentário",
+  "Drama",
+  "Família",
+  "Fantasia",
+  "História",
+  "Horror",
+  "Música",
+  "Mistério",
+  "Romance",
+  "Ficção científica",
+  "Thriller",
+  "Guerra",
+  "Faroeste",
+];

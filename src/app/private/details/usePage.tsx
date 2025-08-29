@@ -4,6 +4,7 @@ import { useParams } from "react-router-dom";
 import moment from "moment";
 
 import { useMovie } from "@/api/callers/movie";
+import type { TFormData } from "@/components/movie-sidebar/constants";
 import type { IMovie } from "@/types/IMovie";
 import masks from "@/utils/masks";
 
@@ -17,7 +18,7 @@ export const usePage = () => {
   };
 
   const [movieData, setMovieData] = useState<IMovie | null>(null);
-  useMovie({
+  const { show, update } = useMovie({
     enabled: false,
     show: !!id,
     id,
@@ -36,6 +37,12 @@ export const usePage = () => {
           setMovieData(formatter);
         },
       },
+      update: {
+        onSuccess: () => {
+          show.refetch();
+          setIsSidebarOpen(false);
+        },
+      },
     },
   });
 
@@ -46,6 +53,10 @@ export const usePage = () => {
     console.log("handleDelete");
   };
 
+  const handleSave = (data: TFormData) => {
+    update.mutate(data);
+  };
+
   return {
     movieData,
     isSidebarOpen,
@@ -53,5 +64,7 @@ export const usePage = () => {
     setIsSidebarOpen,
     handleEdit,
     handleDelete,
+    show,
+    handleSave,
   };
 };

@@ -1,5 +1,3 @@
-import { useState } from "react";
-
 import { MovieCard } from "./_components/movie-card";
 import { usePage } from "./usePage";
 

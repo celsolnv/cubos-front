@@ -8,42 +8,35 @@ import { Upload } from "lucide-react";
 import { InputDefault, TextareaDefault } from "../ds";
 import { SelectDefault } from "../ds/form/select";
 import { MultiSelect } from "../ds/form/select/multi";
-import { availableGenres, statusOptions, type TFormData } from "./schema";
+import { availableGenres, statusOptions, type TFormData } from "./constants";
 import { useMovieSidebar } from "./use";
 
 import Close from "@/assets/icons/close.svg?react";
 import { Button, Input, Label } from "@/components/ui";
+import type { IMovie } from "@/types/IMovie";
 import masks from "@/utils/masks";
 interface MovieEditSidebarProps {
   isOpen: boolean;
   onClose: () => void;
   onSave: (data: TFormData) => void;
+  movie?: IMovie;
 }
 
 export const MovieSidebar: React.FC<MovieEditSidebarProps> = ({
   isOpen,
   onClose,
   onSave,
+  movie,
 }) => {
-  const { hookForm, handleFileUpload, posterPreview } = useMovieSidebar();
-
-  const onSubmit = async (data: TFormData) => {
-    try {
-      await onSave(data);
-      onClose();
-    } catch (error) {
-      console.log(error);
-    }
-  };
+  const { hookForm, handleFileUpload, posterPreview } = useMovieSidebar({
+    isOpen,
+    movie,
+  });
 
   if (!isOpen) return null;
 
   return (
     <div className="fixed inset-0 z-50 flex">
-      {/* Overlay */}
-      {/* <div className="absolute inset-0 bg-black/50" onClick={onClose} /> */}
-
-      {/* Sidebar */}
       <div
         className="ml-auto w-96 bg-sidebar  h-full overflow-y-auto relative z-10 bg-mauve-3"
         onClick={(e) => e.stopPropagation()}
@@ -61,7 +54,7 @@ export const MovieSidebar: React.FC<MovieEditSidebarProps> = ({
 
             <FormProvider {...hookForm}>
               <form
-                onSubmit={hookForm.handleSubmit(onSubmit)}
+                onSubmit={hookForm.handleSubmit(onSave)}
                 className="space-y-4"
               >
                 <InputDefault
@@ -88,19 +81,20 @@ export const MovieSidebar: React.FC<MovieEditSidebarProps> = ({
                   onChange={(value) => hookForm.setValue("genres", value)}
                 />
                 <InputDefault
-                  label="Tagline"
+                  label="Slogan"
                   name="tagline"
                   placeholder="Tagline do filme"
                 />
                 <TextareaDefault label="Sinopse" name="description" />
                 <InputDefault
-                  label="URL do poster"
+                  label="URL do poster "
+                  required={false}
                   name="bannerUrl"
                   placeholder="Banner do filme"
                 />
                 {/* Poster Upload Section */}
                 <div className="space-y-2">
-                  <Label>Poster do Filme</Label>
+                  <Label>Poster do Filme (Opcional)</Label>
                   <div className="flex gap-2">
                     <Input
                       type="file"
@@ -140,7 +134,7 @@ export const MovieSidebar: React.FC<MovieEditSidebarProps> = ({
                   />
                   <InputDefault
                     label="Duração em minutos"
-                    name="duration"
+                    name="durationMinutes"
                     onlyNumbers
                   />
                   {/* <InputDefault label="Situação" name="status" /> */}
@@ -163,9 +157,15 @@ export const MovieSidebar: React.FC<MovieEditSidebarProps> = ({
                   <InputDefault
                     label="Popularidade"
                     name="popularity"
+                    required={false}
                     onlyNumbers
                   />
-                  <InputDefault label="Votos" name="votes" onlyNumbers />
+                  <InputDefault
+                    label="Votos"
+                    name="votes"
+                    onlyNumbers
+                    required={false}
+                  />
                   <InputDefault
                     label="Avaliação"
                     name="rating"

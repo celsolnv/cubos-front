@@ -15,6 +15,8 @@ export default function MovieDetails() {
     setIsSidebarOpen,
     handleEdit,
     handleDelete,
+    show,
+    handleSave,
   } = usePage();
 
   if (!movieData) {
@@ -54,9 +56,11 @@ export default function MovieDetails() {
                   Todo heroi tem seu começo
                 </div>
                 <div className="flex items-center gap-4">
-                  {/* TODO: adicionar popularidade e votos */}
-                  <CardMovieDetailsInfo title="Popularidade" value={"10.000"} />
-                  <CardMovieDetailsInfo title="Votos" value={"5.000"} />
+                  <CardMovieDetailsInfo
+                    title="Popularidade"
+                    value={movieData.popularity}
+                  />
+                  <CardMovieDetailsInfo title="Votos" value={movieData.votes} />
                   <CircularRating rating={movieData.rating} />
                 </div>
               </div>
@@ -103,8 +107,10 @@ export default function MovieDetails() {
                       title="Diretor"
                       value={movieData.director}
                     />
-                    {/* TODO:Adicionar coluna de idioma */}
-                    <CardMovieDetailsInfo title="Idioma" value={"ingles"} />
+                    <CardMovieDetailsInfo
+                      title="Idioma"
+                      value={movieData.language}
+                    />
                   </div>
 
                   <div className="grid grid-cols-2 gap-4">
@@ -129,7 +135,8 @@ export default function MovieDetails() {
         <MovieSidebar
           isOpen={isSidebarOpen}
           onClose={() => setIsSidebarOpen(false)}
-          onSave={() => {}}
+          onSave={handleSave}
+          movie={show?.data}
         />
       </main>
       <Footer />

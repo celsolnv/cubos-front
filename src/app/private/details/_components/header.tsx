@@ -1,5 +1,7 @@
 import React, { useState } from "react";
 
+import { Button } from "@/components/ui";
+
 interface MovieHeaderProps {
   title: string;
   originalTitle: string;
@@ -41,32 +43,21 @@ export const MovieHeader: React.FC<MovieHeaderProps> = ({
         </p>
       </div>
       <div className="self-stretch flex items-center gap-4 text-base font-normal whitespace-nowrap text-center my-auto">
-        <button
+        <Button
           onClick={handleDelete}
           disabled={isDeleting}
-          className="bg-[rgba(183,68,247,0.08)] self-stretch flex min-h-11 gap-3 overflow-hidden text-[#f1ddff] my-auto px-5 py-3 rounded-sm hover:bg-[rgba(183,68,247,0.15)] transition-colors disabled:opacity-50"
+          variant={"soft"}
+          className=" self-stretch flex min-h-11 gap-3 overflow-hidden text-[#f1ddff] my-auto px-5 py-3 rounded-sm transition-colors disabled:opacity-50"
         >
-          <div className="flex items-center gap-3 justify-center">
-            <div className="self-stretch flex items-center gap-2.5 overflow-hidden justify-center my-auto">
-              <span className="self-stretch my-auto">
-                {isDeleting ? "Deletando..." : "Deletar"}
-              </span>
-            </div>
-          </div>
-        </button>
-        <button
-          onClick={handleEdit}
+          {isDeleting ? "Deletando..." : "Deletar"}
+        </Button>
+        <Button
+          onClick={onEdit}
           disabled={isEditing}
-          className="bg-[rgba(142,78,198,1)] self-stretch flex min-h-11 items-center overflow-hidden text-white justify-center my-auto px-5 py-3 rounded-sm hover:bg-[rgba(142,78,198,0.9)] transition-colors disabled:opacity-50"
+          className=" self-stretch flex min-h-11 items-center overflow-hidden justify-center my-auto px-5 py-3 rounded-sm  transition-colors disabled:opacity-50"
         >
-          <div className="self-stretch flex items-center justify-center my-auto">
-            <div className="self-stretch flex items-center gap-2.5 overflow-hidden justify-center my-auto">
-              <span className="self-stretch my-auto">
-                {isEditing ? "Editando..." : "Editar"}
-              </span>
-            </div>
-          </div>
-        </button>
+          {isEditing ? "Editando..." : "Editar"}
+        </Button>
       </div>
     </header>
   );

@@ -255,7 +255,7 @@ class Mask {
     if (!value) {
       return "";
     }
-    const cleanValue = value.replace(/[^\d.]/g, "");
+    const cleanValue = value.replace(/[^\d,.]/g, "");
 
     if (!cleanValue || cleanValue === "." || cleanValue === ",") {
       return "";

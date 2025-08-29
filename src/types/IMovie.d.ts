@@ -17,6 +17,9 @@ export interface IMovie {
   bannerExpiresAt: string;
   bannerKey: string;
 
+  popularity?: number;
+  votes?: number;
+  language?: string;
   // In front
   gain?: string;
 }
