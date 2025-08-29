@@ -1,5 +1,5 @@
 import { useState } from "react";
-import { useParams } from "react-router-dom";
+import { useNavigate, useParams } from "react-router-dom";
 
 import moment from "moment";
 
@@ -12,13 +12,15 @@ export const usePage = () => {
   const { id } = useParams<{ id: string }>();
 
   const [isSidebarOpen, setIsSidebarOpen] = useState(false);
+  const [data, setData] = useState<IMovie | null>(null);
+  const navigate = useNavigate();
 
   const handleSaveMovie = (updatedData: typeof movieData) => {
     setMovieData(updatedData);
   };
 
   const [movieData, setMovieData] = useState<IMovie | null>(null);
-  const { show, update } = useMovie({
+  const { show, update, destroy, list } = useMovie({
     enabled: false,
     show: !!id,
     id,
@@ -35,6 +37,7 @@ export const usePage = () => {
             releaseDate: moment(movie.releaseDate).format("DD/MM/YYYY"),
           };
           setMovieData(formatter);
+          setData(movie);
         },
       },
       update: {
@@ -43,18 +46,24 @@ export const usePage = () => {
           setIsSidebarOpen(false);
         },
       },
+      destroy: {
+        onSuccess: () => {
+          navigate("/");
+        },
+      },
     },
   });
 
   const handleEdit = () => {
     setIsSidebarOpen(true);
   };
-  const handleDelete = () => {
-    console.log("handleDelete");
-  };
 
   const handleSave = (data: TFormData) => {
     update.mutate(data);
+  };
+
+  const handleDelete = () => {
+    destroy.mutate(id!);
   };
 
   return {
@@ -66,5 +75,6 @@ export const usePage = () => {
     handleDelete,
     show,
     handleSave,
+    data,
   };
 };

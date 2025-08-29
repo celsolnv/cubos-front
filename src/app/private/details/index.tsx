@@ -15,7 +15,7 @@ export default function MovieDetails() {
     setIsSidebarOpen,
     handleEdit,
     handleDelete,
-    show,
+    data,
     handleSave,
   } = usePage();
 
@@ -136,7 +136,7 @@ export default function MovieDetails() {
           isOpen={isSidebarOpen}
           onClose={() => setIsSidebarOpen(false)}
           onSave={handleSave}
-          movie={show?.data}
+          movie={data!}
         />
       </main>
       <Footer />

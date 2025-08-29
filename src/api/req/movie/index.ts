@@ -9,17 +9,18 @@ export interface ICreate {
   name: string;
   originalName: string;
   tagline: string;
-  description?: string | null;
-  bannerUrl: string;
   language: string;
   director: string;
   releaseDate: string;
   budget: number;
   revenue: number;
-  popularity: number;
-  votes: number;
-  duration: number;
+  rating: number;
+  durationMinutes: number;
   genres: string[];
+  description?: string | null;
+  bannerUrl?: string | null;
+  popularity?: number | null;
+  votes?: number | null;
 }
 
 // eslint-disable-next-line @typescript-eslint/no-empty-object-type

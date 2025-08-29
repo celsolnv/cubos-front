@@ -1,12 +1,14 @@
 import React, { useState } from "react";
 
+import { DeleteAlert } from "./delete-alert";
+
 import { Button } from "@/components/ui";
 
 interface MovieHeaderProps {
   title: string;
   originalTitle: string;
-  onEdit?: () => void;
-  onDelete?: () => void;
+  onEdit: () => void;
+  onDelete: () => void;
 }
 
 export const MovieHeader: React.FC<MovieHeaderProps> = ({
@@ -16,22 +18,9 @@ export const MovieHeader: React.FC<MovieHeaderProps> = ({
   onDelete,
 }) => {
   const [isDeleting, setIsDeleting] = useState(false);
-  const [isEditing, setIsEditing] = useState(false);
 
   const handleDelete = () => {
     setIsDeleting(true);
-    setTimeout(() => {
-      setIsDeleting(false);
-      onDelete?.();
-    }, 1000);
-  };
-
-  const handleEdit = () => {
-    setIsEditing(true);
-    setTimeout(() => {
-      setIsEditing(false);
-      onEdit?.();
-    }, 500);
   };
 
   return (
@@ -53,12 +42,16 @@ export const MovieHeader: React.FC<MovieHeaderProps> = ({
         </Button>
         <Button
           onClick={onEdit}
-          disabled={isEditing}
           className=" self-stretch flex min-h-11 items-center overflow-hidden justify-center my-auto px-5 py-3 rounded-sm  transition-colors disabled:opacity-50"
         >
-          {isEditing ? "Editando..." : "Editar"}
+          Editar
         </Button>
       </div>
+      <DeleteAlert
+        open={isDeleting}
+        setOpen={setIsDeleting}
+        handleConfirm={onDelete}
+      />
     </header>
   );
 };

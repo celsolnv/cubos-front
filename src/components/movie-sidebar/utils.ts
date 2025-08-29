@@ -12,9 +12,8 @@ export function formatRequest(data?: IMovie): TFormData {
     rating: data.rating,
     budget: masks.money(data.budget),
     revenue: masks.money(data.revenue),
-    popularity: data.popularity ? data.popularity * 1000 : undefined,
-    votes: data.votes ? data.votes * 1000 : undefined,
+    popularity: data.popularity,
+    votes: data.votes,
   };
 }
 
-export function formatResponse(data: TFormData): IMovie {}

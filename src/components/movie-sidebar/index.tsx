@@ -38,7 +38,7 @@ export const MovieSidebar: React.FC<MovieEditSidebarProps> = ({
   return (
     <div className="fixed inset-0 z-50 flex">
       <div
-        className="ml-auto w-96 bg-sidebar  h-full overflow-y-auto relative z-10 bg-mauve-3"
+        className="ml-auto w-96 lg:w-5/12 max-w-[500px] bg-sidebar  h-full overflow-y-auto relative z-10 bg-mauve-3"
         onClick={(e) => e.stopPropagation()}
       >
         <div className="p-6">

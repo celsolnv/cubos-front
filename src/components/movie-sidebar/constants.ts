@@ -14,7 +14,7 @@ export const movieSchema = z.object({
   budget: f.numberTransform("Orçamento"),
   revenue: f.numberTransform("Receita"),
   popularity: f.numberTransform("Popularidade").optional().nullable(),
-  votes: f.numberTransform("Votos").optional().nullable(),
+  votes: f.number("Votos").optional().nullable(),
   rating: f.numberTransformWithDecimal("Avaliação"),
   durationMinutes: f.numberTransform("Duração em minutos"),
   genres: z.array(z.string()).transform((val) => val.map((v) => v.trim())),

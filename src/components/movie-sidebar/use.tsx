@@ -21,7 +21,12 @@ export const useMovieSidebar = ({
   const [posterPreview, setPosterPreview] = useState<string>("");
 
   useEffect(() => {
-    hookForm.reset();
+    if (movie) {
+      hookForm.reset({
+        ...formatRequest(movie),
+      });
+    }
+    console.log("Renovando...");
   }, [hookForm, isOpen]);
 
   const handleFileUpload = (file: File, type: "poster" | "backdrop") => {
