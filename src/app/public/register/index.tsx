@@ -12,7 +12,7 @@ export default function Register() {
   return (
     <>
       <Header />
-      <div className="bg-[url('public/background.png')] relative h-screen w-screen bg-cover bg-center ">
+      <div className="bg-[url('/static/background.png')] relative h-screen w-screen bg-cover bg-center ">
         <div className="absolute inset-0 bg-gradient-to-b from-black/40  to-black/90"></div>
 
         <div className="relative z-10 w-full h-full flex flex-col items-center justify-center">

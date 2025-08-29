@@ -16,7 +16,7 @@ export default function Home() {
   return (
     <div>
       <Header />
-      <div className="bg-[url('public/background.png')] relative  w-screen bg-cover bg-center overflow-x-hidden">
+      <div className="bg-[url('/static/background.png')] relative  w-screen bg-cover bg-center overflow-x-hidden">
         <div className="absolute inset-0 bg-gradient-to-b from-black/40  to-black/90"></div>
 
         <div className="relative z-10 flex flex-col items-center justify-center gap-4 mt-[72px]">
