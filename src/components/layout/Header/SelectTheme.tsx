@@ -1,6 +1,9 @@
 import { useState, useRef, useEffect } from "react";
 
 import { useTheme } from "@/contexts/ThemeContext";
+import Moon from "@/assets/icons/moon.svg";
+import Sun from "@/assets/icons/sun.svg";
+
 
 export default function SelectTheme() {
   const { theme, setTheme } = useTheme();
@@ -29,8 +32,8 @@ export default function SelectTheme() {
 
   const getThemeIcon = (themeType: "light" | "dark") => {
     return themeType === "light"
-      ? "public/icons/sun.svg"
-      : "public/icons/moon.svg";
+      ? Sun
+      : Moon;
   };
 
   const getThemeLabel = (themeType: "light" | "dark") => {

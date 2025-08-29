@@ -5,8 +5,8 @@ export interface IMovie {
   description: string;
   status: string;
   releaseDate: string;
-  budget: number;
-  revenue: number;
+  budget: number | string;
+  revenue: number | string;
   bannerUrl: string;
   genres: string[];
   director: string;
@@ -16,4 +16,7 @@ export interface IMovie {
   updatedAt: string;
   bannerExpiresAt: string;
   bannerKey: string;
+
+  // In front
+  gain?: string;
 }

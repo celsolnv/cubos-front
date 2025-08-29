@@ -6,9 +6,8 @@ import { usePage } from "./usePage";
 import { Footer, Header } from "@/components/layout";
 import { MovieSidebar } from "@/components/movie-sidebar";
 import { Button, Input } from "@/components/ui";
-
 export default function Home() {
-  const { data, handleSearch } = usePage();
+  const { data, handleSearch, handleView } = usePage();
   const [isSidebarOpen, setIsSidebarOpen] = useState(false);
 
   const onSave = (data: unknown) => {
@@ -37,7 +36,7 @@ export default function Home() {
 
           <div className="bg-mauve-a-3 w-full gap-4 py-4 flex flex-wrap justify-center ">
             {data?.map((movie) => (
-              <MovieCard key={movie.id} {...movie} />
+              <MovieCard key={movie.id} {...movie} onView={handleView} />
             ))}
             {data.length === 0 && (
               <div className="flex flex-col items-center justify-center h-screen">

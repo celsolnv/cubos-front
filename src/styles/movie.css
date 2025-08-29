@@ -1,0 +1,19 @@
+.card-movie-details-info {
+  border-radius: 4px;
+  background: rgba(35, 34, 37, 0.75);
+  backdrop-filter: blur(2px);
+  padding: calc(var(--spacing) * 3);
+  border-radius: 0.25rem;
+}
+
+.gender-tag {
+  border-radius: 2px;
+  background: var(--purple-a-3);
+  backdrop-filter: blur(2px);
+  padding: calc(var(--spacing) * 2);
+  text-transform: uppercase;
+  font-weight: 600;
+  font-size: 12px;
+  color: #ECD9FA;
+
+}

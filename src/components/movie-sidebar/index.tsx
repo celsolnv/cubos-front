@@ -1,5 +1,5 @@
-import React, { useState } from "react";
-import { FormProvider, useForm } from "react-hook-form";
+import React from "react";
+import { FormProvider} from "react-hook-form";
 
 import { InputDefault } from "../ds";
 import { useMovieSidebar } from "./use";

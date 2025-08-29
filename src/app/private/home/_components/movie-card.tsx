@@ -1,20 +1,27 @@
+/* eslint-disable jsx-a11y/no-noninteractive-element-interactions */
+/* eslint-disable jsx-a11y/click-events-have-key-events */
+
 import type { IMovie } from "@/types/IMovie";
 
 interface IMovieCardProps extends IMovie {
   className?: string;
+  onView: (id: string) => void;
 }
 export function MovieCard({
+  id,
   bannerUrl,
   name,
   genres,
   rating,
   className,
+  onView,
 }: IMovieCardProps) {
   const hideClass =
     "opacity-0 group-hover:opacity-100 transition-all duration-300 transform translate-y-4 group-hover:translate-y-0";
   return (
     <article
       className={`relative group cursor-pointer overflow-hidden rounded-lg h-[281px] w-[183px] lg:w-[235px] lg:h-[355px]${className}`}
+      onClick={() => onView(id)}
     >
       <div
         className="absolute inset-0 rounded-lg"

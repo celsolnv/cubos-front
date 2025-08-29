@@ -1,4 +1,5 @@
-import { useCallback, useState } from "react";
+import { useCallback, useMemo, useState } from "react";
+import { useNavigate } from "react-router-dom";
 
 import { useMovie } from "@/api/callers/movie";
 import type { IMovie } from "@/types/IMovie";
@@ -7,6 +8,7 @@ import { debounce } from "@/utils/func";
 
 export const usePage = () => {
   const [data, setData] = useState<IMovie[]>([]);
+  const navigate = useNavigate();
   const [filters, setFilters] = useState<IQuery>({
     page: 1,
     limit: 10,
@@ -29,18 +31,30 @@ export const usePage = () => {
     },
   });
 
-  const handleSearch = useCallback(
-    debounce((param: string) => {
-      const query = param;
-      setFilters({ ...filters, query });
-    }, 500),
-    [],
+  const debouncedSearch = useMemo(
+    () =>
+      debounce((param: string) => {
+        setFilters((prevFilters) => ({ ...prevFilters, query: param }));
+      }, 500),
+    [setFilters],
   );
+
+  const handleSearch = useCallback(
+    (param: string) => {
+      debouncedSearch(param);
+    },
+    [debouncedSearch],
+  );
+
+  const handleView = (id: string) => {
+    navigate(`/details/${id}`);
+  };
 
   return {
     data,
     setFilters,
     filters,
     handleSearch,
+    handleView,
   };
 };
