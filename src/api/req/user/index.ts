@@ -15,7 +15,7 @@ export const createUser = async (body: ICreateUserParams): Promise<IUser> =>
     method: "post",
     url,
     body,
-    showSuccess: false,
-    hideError: true,
-    checkStatus: false,
+    showSuccess: true,
+    hideError: false,
+    successMessage: "Usuário criado com sucesso",
   });
