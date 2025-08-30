@@ -1,3 +1,4 @@
+import FilterModal from "./_components/filter-modal";
 import { MovieCard } from "./_components/movie-card";
 import { usePage } from "./usePage";
 
@@ -16,6 +17,8 @@ export default function Home() {
     pagination,
     setFilters,
     filters,
+    isFilterModalOpen,
+    setIsFilterModalOpen,
   } = usePage();
 
   return (
@@ -36,9 +39,14 @@ export default function Home() {
                 />
               </div>
               <div className="flex w-full px-4 gap-2">
-                <Button className="grow-1" variant="soft">
+                <Button
+                  className="grow-1"
+                  variant="soft"
+                  onClick={() => setIsFilterModalOpen(true)}
+                >
                   Filtros
                 </Button>
+
                 <Button
                   onClick={() => setIsSidebarOpen(true)}
                   className="grow-2"
@@ -69,6 +77,12 @@ export default function Home() {
         </div>
       </div>
       <Footer />
+      <FilterModal
+        filters={filters}
+        setFilters={setFilters}
+        isOpen={isFilterModalOpen}
+        onClose={() => setIsFilterModalOpen(false)}
+      />
       <MovieSidebar
         isOpen={isSidebarOpen}
         onClose={() => setIsSidebarOpen(false)}

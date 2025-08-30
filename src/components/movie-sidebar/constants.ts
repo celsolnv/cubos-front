@@ -31,24 +31,3 @@ export const statusOptions = [
   { label: "Cancelado", value: "cancelado" },
   { label: "Em espera", value: "em espera" },
 ];
-
-export const availableGenres = [
-  "Ação",
-  "Aventura",
-  "Animação",
-  "Comédia",
-  "Crime",
-  "Documentário",
-  "Drama",
-  "Família",
-  "Fantasia",
-  "História",
-  "Horror",
-  "Música",
-  "Mistério",
-  "Romance",
-  "Ficção Científica",
-  "Thriller",
-  "Guerra",
-  "Faroeste",
-];

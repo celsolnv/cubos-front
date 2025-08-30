@@ -8,11 +8,12 @@ import { Upload } from "lucide-react";
 import { InputDefault, TextareaDefault } from "../ds";
 import { SelectDefault } from "../ds/form/select";
 import { MultiSelect } from "../ds/form/select/multi";
-import { availableGenres, statusOptions, type TFormData } from "./constants";
+import { statusOptions, type TFormData } from "./constants";
 import { useMovieSidebar } from "./use";
 
 import Close from "@/assets/icons/close.svg?react";
 import { Button, Input, Label } from "@/components/ui";
+import { availableGenres } from "@/constants/gender";
 import type { IMovie } from "@/types/IMovie";
 import masks from "@/utils/masks";
 interface MovieEditSidebarProps {

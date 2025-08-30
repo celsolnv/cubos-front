@@ -8,3 +8,5 @@ export * from "./select";
 export * from "./popover";
 export * from "./badge";
 export * from "./alert-dialog";
+export * from "./dialog";
+export * from "./slider";

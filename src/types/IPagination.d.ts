@@ -24,6 +24,10 @@ export interface IQuery {
   query?: string;
   initial_date?: string;
   final_date?: string;
+
+  genres?: string[];
+  min_duration?: number;
+  max_duration?: number;
 }
 
 export interface IManyAction {

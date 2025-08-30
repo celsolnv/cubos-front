@@ -1,69 +1,160 @@
-# React + TypeScript + Vite
+# Cubos Frontend - Sistema de Filmes
 
-This template provides a minimal setup to get React working in Vite with HMR and some ESLint rules.
+Frontend desenvolvido em React + TypeScript + Vite para gerenciamento de filmes e avaliações.
 
-Currently, two official plugins are available:
+## 🚀 Pré-requisitos
 
-- [@vitejs/plugin-react](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react) uses [Babel](https://babeljs.io/) for Fast Refresh
-- [@vitejs/plugin-react-swc](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react-swc) uses [SWC](https://swc.rs/) for Fast Refresh
+- **Node.js**: Versão LTS mais recente (recomendado: 20.x ou superior)
+- **npm** ou **yarn** ou **pnpm**
 
-## Expanding the ESLint configuration
+### Verificar versão do Node.js
 
-If you are developing a production application, we recommend updating the configuration to enable type-aware lint rules:
-
-```js
-export default tseslint.config([
-  globalIgnores(['dist']),
-  {
-    files: ['**/*.{ts,tsx}'],
-    extends: [
-      // Other configs...
-
-      // Remove tseslint.configs.recommended and replace with this
-      ...tseslint.configs.recommendedTypeChecked,
-      // Alternatively, use this for stricter rules
-      ...tseslint.configs.strictTypeChecked,
-      // Optionally, add this for stylistic rules
-      ...tseslint.configs.stylisticTypeChecked,
-
-      // Other configs...
-    ],
-    languageOptions: {
-      parserOptions: {
-        project: ['./tsconfig.node.json', './tsconfig.app.json'],
-        tsconfigRootDir: import.meta.dirname,
-      },
-      // other options...
-    },
-  },
-])
+```bash
+node --version
+# Deve ser 18.x ou superior (recomendado: 20.x LTS)
 ```
 
-You can also install [eslint-plugin-react-x](https://github.com/Rel1cx/eslint-react/tree/main/packages/plugins/eslint-plugin-react-x) and [eslint-plugin-react-dom](https://github.com/Rel1cx/eslint-react/tree/main/packages/plugins/eslint-plugin-react-dom) for React-specific lint rules:
+### Instalar Node.js LTS
 
-```js
-// eslint.config.js
-import reactX from 'eslint-plugin-react-x'
-import reactDom from 'eslint-plugin-react-dom'
+Se você não tiver o Node.js instalado ou precisar atualizar:
 
-export default tseslint.config([
-  globalIgnores(['dist']),
-  {
-    files: ['**/*.{ts,tsx}'],
-    extends: [
-      // Other configs...
-      // Enable lint rules for React
-      reactX.configs['recommended-typescript'],
-      // Enable lint rules for React DOM
-      reactDom.configs.recommended,
-    ],
-    languageOptions: {
-      parserOptions: {
-        project: ['./tsconfig.node.json', './tsconfig.app.json'],
-        tsconfigRootDir: import.meta.dirname,
-      },
-      // other options...
-    },
-  },
-])
+**Via nvm (recomendado):**
+```bash
+nvm install --lts
+nvm use --lts
 ```
+
+**Via site oficial:**
+- Acesse [nodejs.org](https://nodejs.org)
+- Baixe a versão LTS (Long Term Support)
+
+## 📦 Instalação
+
+1. **Clone o repositório:**
+```bash
+git clone <url-do-repositorio>
+cd front
+```
+
+2. **Instale as dependências:**
+```bash
+npm install
+# ou
+yarn install
+# ou
+pnpm install
+```
+
+## 🏃‍♂️ Executando o projeto
+
+### Desenvolvimento
+```bash
+npm run dev
+# ou
+yarn dev
+# ou
+pnpm dev
+```
+
+O projeto estará disponível em: `http://localhost:5173`
+
+### Build de produção
+```bash
+npm run build
+# ou
+yarn build
+# ou
+pnpm build
+```
+
+### Preview do build
+```bash
+npm run preview
+# ou
+yarn preview
+# ou
+pnpm preview
+```
+
+## 🛠️ Scripts disponíveis
+
+- `dev` - Inicia o servidor de desenvolvimento
+- `build` - Gera o build de produção
+- `preview` - Visualiza o build de produção
+- `lint` - Executa o linter
+- `type-check` - Verifica os tipos TypeScript
+
+## 🏗️ Tecnologias utilizadas
+
+- **React 18** - Biblioteca para interfaces
+- **TypeScript** - Tipagem estática
+- **Vite** - Build tool e dev server
+- **Tailwind CSS** - Framework CSS utilitário
+- **React Hook Form** - Gerenciamento de formulários
+- **Zod** - Validação de schemas
+- **Lucide React** - Ícones
+
+## 📁 Estrutura do projeto
+
+```
+src/
+├── app/           # Páginas da aplicação
+├── components/    # Componentes reutilizáveis
+├── contexts/      # Contextos React
+├── hooks/         # Hooks customizados
+├── types/         # Definições de tipos
+├── utils/         # Utilitários e máscaras
+└── styles/        # Estilos globais
+```
+
+## 🔧 Configuração
+
+### Variáveis de ambiente
+Crie um arquivo `.env.local` na raiz do projeto:
+
+```env
+VITE_API_URL=sua_url_da_api
+```
+
+### Configurações do Vite
+As configurações estão em `vite.config.ts` e incluem:
+- Alias de imports (`@/` para `src/`)
+- Plugin React
+- Configurações de build
+
+## 🚨 Solução de problemas
+
+### Erro de versão do Node.js
+Se você receber erros relacionados à versão do Node.js:
+
+```bash
+# Verifique a versão atual
+node --version
+
+# Instale/use a versão LTS
+nvm install --lts
+nvm use --lts
+
+# Reinstale as dependências
+rm -rf node_modules package-lock.json
+npm install
+```
+
+### Problemas de dependências
+```bash
+# Limpe o cache e reinstale
+npm cache clean --force
+rm -rf node_modules package-lock.json
+npm install
+```
+
+## 📝 Contribuindo
+
+1. Certifique-se de estar usando Node.js LTS
+2. Instale as dependências
+3. Execute o linter antes de commitar
+4. Siga os padrões de código estabelecidos
+
+## 📄 Licença
+
+Este projeto é parte do exame técnico da Cubos.

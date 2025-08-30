@@ -13,6 +13,7 @@ export const usePage = () => {
   const [pagination, setPagination] = useState();
   const navigate = useNavigate();
   const [isSidebarOpen, setIsSidebarOpen] = useState(false);
+  const [isFilterModalOpen, setIsFilterModalOpen] = useState(false);
 
   const [filters, setFilters] = useState<IQuery>({
     page: 1,
@@ -82,5 +83,7 @@ export const usePage = () => {
     isSidebarOpen,
     setIsSidebarOpen,
     pagination,
+    isFilterModalOpen,
+    setIsFilterModalOpen,
   };
 };
