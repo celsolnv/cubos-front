@@ -63,7 +63,7 @@ export default function Register() {
             </div>
           </div>
 
-          <Footer />
+          <Footer isFixed />
         </div>
       </div>
     </>
