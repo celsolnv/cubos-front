@@ -25,7 +25,7 @@ export const MovieHeader: React.FC<MovieHeaderProps> = ({
 
   return (
     <header className="z-0 flex min-h-[59px] w-full items-center gap-[40px_100px] justify-between flex-wrap max-md:max-w-full">
-      <div className="self-stretch flex min-w-60 flex-col text-[rgba(238,238,240,1)] w-[264px] my-auto pr-[52px]">
+      <div className="self-stretch flex min-w-60 flex-col text-mauve-4 w-[264px] my-auto pr-[52px]">
         <h1 className="text-[32px] font-semibold">{title}</h1>
         <p className="text-base font-normal">
           Título original: {originalTitle}
@@ -36,7 +36,7 @@ export const MovieHeader: React.FC<MovieHeaderProps> = ({
           onClick={handleDelete}
           disabled={isDeleting}
           variant={"soft"}
-          className=" self-stretch flex min-h-11 gap-3 overflow-hidden text-[#f1ddff] my-auto px-5 py-3 rounded-sm transition-colors disabled:opacity-50"
+          className=" self-stretch flex min-h-11 gap-3 overflow-hidden my-auto px-5 py-3 rounded-sm transition-colors disabled:opacity-50"
         >
           {isDeleting ? "Deletando..." : "Deletar"}
         </Button>
