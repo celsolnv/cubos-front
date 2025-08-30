@@ -7,7 +7,6 @@ import {
   AlertDialogFooter,
   AlertDialogHeader,
   AlertDialogTitle,
-  AlertDialogTrigger,
 } from "@/components/ui/alert-dialog";
 
 interface IDeleteAlert {
@@ -18,10 +17,9 @@ interface IDeleteAlert {
 export function DeleteAlert({ open, setOpen, handleConfirm }: IDeleteAlert) {
   return (
     <AlertDialog open={open} onOpenChange={setOpen}>
-      <AlertDialogTrigger asChild></AlertDialogTrigger>
       <AlertDialogContent className="bg-mauve-3 border-mauve-6">
         <AlertDialogHeader>
-          <AlertDialogTitle className="text-white">
+          <AlertDialogTitle className="dark:text-white text-mauve-12">
             Deletar Filme?
           </AlertDialogTitle>
           <AlertDialogDescription>

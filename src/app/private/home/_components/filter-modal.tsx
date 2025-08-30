@@ -67,10 +67,12 @@ const FilterModal: React.FC<FilterModalProps> = ({
 
   return (
     <Dialog open={isOpen} onOpenChange={onClose}>
-      <DialogContent className="sm:max-w-[500px] max-h-[90vh] overflow-y-auto border-mauve-6 bg-mauve-3 text-white">
+      <DialogContent className="sm:max-w-[500px] max-h-[90vh] overflow-y-auto border-mauve-6 dark:bg-mauve-3 bg-mauve-6 dark:text-white text-mauve-12">
         <DialogHeader>
-          <DialogTitle>Filtros de Busca</DialogTitle>
-          <DialogDescription className="text-muted-foreground">
+          <DialogTitle className="dark:text-white text-mauve-12">
+            Filtros de Busca
+          </DialogTitle>
+          <DialogDescription className="dark:text-muted-foreground text-muted-foreground">
             Refine sua busca por filmes usando os filtros abaixo
           </DialogDescription>
         </DialogHeader>
@@ -85,7 +87,7 @@ const FilterModal: React.FC<FilterModalProps> = ({
                 <div>
                   <label
                     htmlFor="minDuration"
-                    className="text-xs text-muted-foreground"
+                    className="text-xs dark:text-muted-foreground "
                   >
                     Duração mínima
                   </label>
@@ -167,9 +169,9 @@ const FilterModal: React.FC<FilterModalProps> = ({
                 <Button
                   key={genre}
                   onClick={() => toggleGenre(genre)}
-                  className={`px-3 py-2 text-sm rounded-md border transition-colors border-mauve-6 ${
+                  className={`px-3 py-2 text-sm rounded-md border transition-colors dark:border-mauve-6 border-mauve-8 ${
                     selectedGenres.includes(genre)
-                      ? "bg-primary text-primary-foreground "
+                      ? "bg-primary dark:text-primary-foreground text-white "
                       : "bg-background text-foreground hover:bg-accent hover:text-accent-foreground"
                   }`}
                 >
