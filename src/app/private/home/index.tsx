@@ -40,8 +40,9 @@ export default function Home() {
               </div>
               <div className="flex w-full px-4 gap-2">
                 <Button
-                  className="grow-1"
+                  type="button"
                   variant="soft"
+                  className="grow-1"
                   onClick={() => setIsFilterModalOpen(true)}
                 >
                   Filtros
@@ -50,6 +51,7 @@ export default function Home() {
                 <Button
                   onClick={() => setIsSidebarOpen(true)}
                   className="grow-2"
+                  type="button"
                 >
                   Adicionar Filme
                 </Button>
