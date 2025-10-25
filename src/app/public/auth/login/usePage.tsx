@@ -7,7 +7,6 @@ import * as z from "zod";
 import { CustomError } from "@/api/handle";
 import * as f from "@/constants/schemas";
 import { useAuth } from "@/contexts/AuthContext";
-import { getToken } from "@/hooks/token";
 import { useManagerForm } from "@/logic/form";
 import { zodResolver } from "@hookform/resolvers/zod";
 
@@ -17,6 +16,7 @@ const schema = z.object({
 });
 
 type IForm = z.infer<typeof schema>;
+
 export const usePage = () => {
   const hookForm = useForm({
     resolver: zodResolver(schema),

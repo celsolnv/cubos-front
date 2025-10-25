@@ -6,7 +6,7 @@ import { Footer, Header } from "@/components/layout";
 import Pagination from "@/components/layout/Pagination";
 import { MovieSidebar } from "@/components/movie-sidebar";
 import { Button, Input } from "@/components/ui";
-export default function Home() {
+export default function List() {
   const {
     data,
     handleSearch,
